@@ -1,14 +1,14 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config();
-const api = express()
+const app = express();
 
-const routwe = require('./src/routes');
+const router = require('./src/router');
 
-app.add(cors());
-app.add(express.json());
-app.add(router);
+app.use(cors());
+app.use(express.json());
+app.use(router);
 
-app.listen(5000, () => {
-    console.log('API respondendo em http://localhost:5000');
-    })
+app.listen(process.env.PORT,()=>{
+    console.log('API respondendo em http://localhost:'+process.env.PORT);
+}); 
